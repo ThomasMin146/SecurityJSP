@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:mvc="http://www.springframework.org/schema/mvc"
+        xmlns:p="http://www.springframework.org/schema/p"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/mvc
+            http://www.springframework.org/schema/mvc/spring-mvc.xsd
+            http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop.xsd" >
+
+    <!--    <context:annotation-config/>-->
+
+<!--    <context:component-scan base-package="sk.icz.jdoc.server.dmsclient.controller, sk.icz.jdoc.baseweb, sk.nextit.jdoc.web">-->
+<!--        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+<!--    </context:component-scan>-->
+
+<!--    <aop:config proxy-target-class="true" />-->
+<!--    <aop:aspectj-autoproxy />-->
+
+    <!--    <mvc:annotation-driven/>-->
+
+    <!--    <mvc:interceptors>-->
+    <!--        <mvc:interceptor>-->
+    <!--            <mvc:mapping path="/dms/**"/>-->
+    <!--            <bean class="sk.icz.jdoc.server.dmsclient.interceptor.MenuInterceptor" />-->
+    <!--        </mvc:interceptor>-->
+
+    <!--        <mvc:interceptor>-->
+    <!--            <mvc:mapping path="/**"/>-->
+    <!--            <bean id="webContentInterceptor" class="org.springframework.web.servlet.mvc.WebContentInterceptor">-->
+    <!--                <property name="cacheSeconds" value="0"/>-->
+    <!--                <property name="useExpiresHeader" value="true"/>-->
+    <!--                <property name="useCacheControlHeader" value="true"/>-->
+    <!--                <property name="useCacheControlNoStore" value="true"/>-->
+    <!--            </bean>-->
+    <!--        </mvc:interceptor>-->
+    <!--    </mvc:interceptors>-->
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix">
+            <value>/WEB-INF/jsp/</value>
+        </property>
+        <property name="suffix">
+            <value>.jsp</value>
+        </property>
+        <!-- http://stackoverflow.com/questions/2072101/accessing-spring-mvc-di-beans-from-jsp -->
+        <property name="exposeContextBeansAsAttributes" value="true"/>
+    </bean>
+
+    <!--    <bean id="messageSource" class="sk.icz.jdoc.baseweb.utils.JDocMessageSource">-->
+    <!--        <property name="basename" value="classpath:messages" />-->
+    <!--        <property name="defaultEncoding" value="UTF-8"/>-->
+    <!--    </bean>-->
+
+<!--    <bean class="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver" p:order="1" />-->
+<!--    <bean id="customHandlerExceptionResolver" class="sk.icz.jdoc.baseweb.handler.ExceptionHandler" p:order="2">-->
+<!--        <property name="messageConverters">-->
+<!--            <list>-->
+<!--                <bean class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter" />-->
+<!--                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />-->
+<!--            </list>-->
+<!--        </property>-->
+<!--    </bean>-->
+    <bean class="org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver" />
+    <bean class="org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver" />
+
+</beans>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+                           http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+
+<!--    <import resource="spring-context-base.xml"/>-->
+
+<!--    &lt;!&ndash;    <context:annotation-config/>&ndash;&gt;-->
+
+<!--    <context:component-scan base-package="sk.icz.jdoc.server.dmsclient, sk.nextit.jdoc.web, sk.nextit.jdoc.service, sk.icz.jdoc.baseweb, sk.icz.jdoc.engine, sk.nextit.jdoc.business, sk.nextit.outbox">-->
+<!--        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+<!--    </context:component-scan>-->
+
+<!--    &lt;!&ndash;    <bean id="mvcHandlerMappingIntrospector" class="org.springframework.web.servlet.handler.HandlerMappingIntrospector"></bean>&ndash;&gt;-->
+
+<!--    &lt;!&ndash;    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean" autowire="byName">&ndash;&gt;-->
+<!--    &lt;!&ndash;        <property name="jndiName" value="#{profileSettings['datasource.jndi.name']}" />&ndash;&gt;-->
+<!--    &lt;!&ndash;        <property name="proxyInterface" value="javax.sql.DataSource" />&ndash;&gt;-->
+<!--    &lt;!&ndash;    </bean>&ndash;&gt;-->
+
+<!--    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
+<!--        <property name="dataSource" ref="dataSource"/>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash; To enable both @Scheduled and @Async annotations. &ndash;&gt;-->
+<!--    &lt;!&ndash;    <task:annotation-driven/>&ndash;&gt;-->
+<!--    &lt;!&ndash;    <tx:annotation-driven/>&ndash;&gt;-->
+
+<!--    <bean class="sk.nextit.jdoc.utils.JDocEmailUtils"/>-->
+
+<!--    <bean id="versionPropertySourcePlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
+<!--        <property name="locations">-->
+<!--            <list>-->
+<!--                <value>classpath*:version.properties</value>-->
+<!--                <value>classpath*:sk/icz/jdoc/presto/ext/version.plugin.properties</value>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--        <property name="ignoreUnresolvablePlaceholders" value="true"/>-->
+<!--        <property name="order" value="1" />-->
+<!--    </bean>-->
+
+<!--    <bean id="yamlProperties" class="org.springframework.beans.factory.config.YamlPropertiesFactoryBean">-->
+<!--        <property name="resources" value="file:${JDOC_HOME}/conf/application.yml"/>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash;    <bean id="propertyPlaceholderConfigurer" class="sk.icz.jdoc.base.spring.support.jndi.JDocPropertyPlaceholderConfigurer">&ndash;&gt;-->
+<!--    &lt;!&ndash;        <property name="properties" ref="yamlProperties" />&ndash;&gt;-->
+<!--    &lt;!&ndash;        <property name="datasource" ref="dataSource" />&ndash;&gt;-->
+<!--    &lt;!&ndash;        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <property name="ignoreUnresolvablePlaceholders" value="true"/>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <property name="order" value="2" />&ndash;&gt;-->
+<!--    &lt;!&ndash;    </bean>&ndash;&gt;-->
+
+<!--    <bean id="messageSource" class="sk.icz.jdoc.baseweb.utils.JDocMessageSource">-->
+<!--        <property name="basename" value="classpath:messages" />-->
+<!--        <property name="defaultEncoding" value="UTF-8"/>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash; MyBatis engine &ndash;&gt;-->
+<!--    <bean id="vendorProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">-->
+<!--        <property name="properties">-->
+<!--            <props>-->
+<!--                <prop key="Microsoft SQL Server">ms</prop>-->
+<!--                <prop key="PostgreSQL">pg</prop>-->
+<!--                <prop key="Oracle">ora</prop>-->
+<!--            </props>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+<!--    <bean id="databaseIdProvider" class="org.apache.ibatis.mapping.VendorDatabaseIdProvider">-->
+<!--        <property name="properties" ref="vendorProperties"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
+<!--        <property name="dataSource" ref="dataSource" />-->
+<!--        <property name="databaseIdProvider" ref="databaseIdProvider" />-->
+<!--        <property name="configLocation" value="classpath:mybatis-configuration.xml" />-->
+<!--        <property name="mapperLocations" value="classpath*:sk/icz/jdoc/engine/**/*DAO.xml" />-->
+<!--        <property name="configurationProperties">-->
+<!--            <props>-->
+<!--                <prop key="resultsLimit">${jdoc.sql.limit}</prop>-->
+<!--            </props>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash; MyBatis - najdi vsetky Mapper a zaregistruj ich pre Autowired &ndash;&gt;-->
+<!--    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
+<!--        <property name="basePackage" value="sk.icz.jdoc.engine.dao;-->
+<!--                                            sk.icz.jdoc.engine.attributes.dao;-->
+<!--                                            sk.icz.jdoc.engine.resourceadapter.dao;-->
+<!--                                            sk.icz.jdoc.engine.scheduler.dao;-->
+<!--                                            sk.icz.jdoc.engine.relation.dao;-->
+<!--                                            sk.icz.jdoc.engine.logging.dao;-->
+<!--                                            sk.icz.jdoc.engine.index.dao;-->
+<!--                                            sk.icz.jdoc.engine.ocr.dao" />-->
+<!--    </bean>-->
+
+<!--    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />-->
+</beans>

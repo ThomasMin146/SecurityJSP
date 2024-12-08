@@ -1,0 +1,4 @@
+sk\thomas\SecurityJSP\SecurityJspApplication.class
+sk\thomas\SecurityJSP\config\SecurityConfig.class
+sk\thomas\SecurityJSP\controller\SearchController.class
+sk\thomas\SecurityJSP\controller\IndexController.class
